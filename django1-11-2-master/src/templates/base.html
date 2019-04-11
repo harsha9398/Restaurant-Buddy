@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<head>
+	{% include 'snippets/cdn.html' %}
+	<title>{% block title %}Home{% endblock title %}</title>
+	<style type="text/css">
+		span {
+			font-size: 150%;
+		}
+	</style>	
+</head>
+<html>
+	<body>
+		<div class='container text-center'>
+		<h2 class="text-secondary">
+			<i>
+				<a href= {% url 'home' %}
+		 style="text-decoration-line: none; color: inherit;">JustYours.com</a>
+		</i>
+		{% if request.user.is_authenticated %}
+		<small class="text-secondary" style="font-size: 40%"><a href='/logout' style="text-decoration: none;"> Logout</a></small>
+		{% else %}
+		<small class="text-secondary" style="font-size: 40%"><a href='/login' style="text-decoration: none;"> Login</a></small>
+		{% endif %}
+		</h2>
+
+		{% include 'snippets/nav.html' %}
+			{% block content %}
+			{% endblock content %}	
+		</div>
+	</body>
+</html>
